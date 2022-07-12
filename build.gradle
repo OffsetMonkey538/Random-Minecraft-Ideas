@@ -1,0 +1,43 @@
+plugins {
+	id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+allprojects {
+	apply plugin: 'fabric-loom'
+
+	tasks.withType(JavaCompile).configureEach {
+		it.options.release = 17
+	}
+
+	java {
+		withSourcesJar()
+	}
+
+	dependencies {
+		// To change the versions see the gradle.properties file
+		minecraft "com.mojang:minecraft:${project.minecraft_version}"
+		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	}
+
+	loom {
+		shareRemapCaches = true
+	}
+
+	tasks.withType(ProcessResources).configureEach {
+		inputs.property "version", project.version
+
+		filesMatching("fabric.mod.json") {
+			expand "version": project.version
+		}
+	}
+
+	jar {
+		from("../LICENSE") {
+			rename { "${it}_${project.archivesBaseName}"}
+		}
+	}
+}

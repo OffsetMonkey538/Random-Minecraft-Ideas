@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "villagerdrops",
+  "version": "${version}",
+  "name": "Villager Drops",
+  "description": "Makes villagers drop their inventory",
+  "authors": [
+    "OffsetMonkey538"
+  ],
+  "contact": {
+    "sources": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas",
+    "issues": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "mixins": [
+    "villagerdrops.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*",
+    "java": ">=17"
+  }
+}

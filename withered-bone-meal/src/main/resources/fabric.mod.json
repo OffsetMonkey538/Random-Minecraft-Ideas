@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "withermeal",
+  "version": "${version}",
+
+  "name": "Withered Bone Meal",
+  "description": "todo",
+  "authors": [
+    "OffsetMonkey538"
+  ],
+  "contact": {
+    "sources": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas",
+    "issues": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas/issues"
+  },
+
+  "license": "MIT",
+  "icon": "assets/withermeal/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.offsetmonkey538.withermeal.WithermealMain"
+    ]
+  },
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*",
+    "minecraft": "*",
+    "java": ">=17"
+  }
+}

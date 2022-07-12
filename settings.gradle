@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'Random-Minecraft-Ideas'
+
+include 'withered-bone-meal'
+include 'villager-drops'
+
