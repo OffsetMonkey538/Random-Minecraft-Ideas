@@ -8,8 +8,8 @@
     "OffsetMonkey538"
   ],
   "contact": {
-    "sources": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas",
-    "issues": "https://github.com/OffsetMonkey538/Crappy-Minecraft-Ideas/issues"
+    "sources": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas",
+    "issues": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas/issues"
   },
   "license": "MIT",
   "environment": "*",
@@ -18,7 +18,6 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": "*",
-    "java": ">=17"
+    "minecraft": "*"
   }
 }
