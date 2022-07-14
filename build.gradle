@@ -5,15 +5,23 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
+version = project.root_version
+
 allprojects {
 	apply plugin: 'fabric-loom'
 
-	tasks.withType(JavaCompile).configureEach {
-		it.options.release = 17
-	}
-
 	java {
 		withSourcesJar()
+	}
+
+	repositories {
+		maven {
+			name = "TerraformersMC"
+			url = "https://maven.terraformersmc.com/releases/"
+			content {
+				includeGroup "com.terraformersmc"
+			}
+		}
 	}
 
 	dependencies {
@@ -21,23 +29,42 @@ allprojects {
 		minecraft "com.mojang:minecraft:${project.minecraft_version}"
 		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	}
 
-	loom {
-		shareRemapCaches = true
+		// ModMenu for testing
+		modRuntimeOnly "com.terraformersmc:modmenu:4.0.3"
 	}
 
 	tasks.withType(ProcessResources).configureEach {
 		inputs.property "version", project.version
 
+		inputs.property "root_id", project.root_id
+		inputs.property "root_name", project.root_name
+		inputs.property "root_description", project.root_description
+		inputs.property "root_icon", project.root_icon
+
+		inputs.property "discord_invite", project.discord_invite
+
+
 		filesMatching("fabric.mod.json") {
-			expand "version": project.version
+			expand "version": project.version,
+
+					"root_id": root_id,
+					"root_name": root_name,
+					"root_description": root_description,
+					"root_icon": root_icon,
+
+					"discord_invite": discord_invite
+		}
+	}
+}
+
+dependencies {
+	afterEvaluate {
+		subprojects.each {
+			runtimeOnly project(path: it.path, configuration: "namedElements")
 		}
 	}
 
-	jar {
-		from("../LICENSE") {
-			rename { "${it}_${project.archivesBaseName}"}
-		}
-	}
+	// Fabric API
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }

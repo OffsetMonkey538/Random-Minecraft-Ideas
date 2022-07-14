@@ -11,6 +11,5 @@ pluginManagement {
 
 rootProject.name = 'Random-Minecraft-Ideas'
 
-include 'withered-bone-meal'
-include 'villager-drops'
+include 'withered-bone-meal', 'villager-drops'
 

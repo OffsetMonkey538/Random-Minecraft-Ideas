@@ -3,7 +3,7 @@
   "id": "villagerdrops",
   "version": "${version}",
   "name": "Villager Drops",
-  "description": "Makes villagers drop their inventory",
+  "description": "Makes villagers drop their inventory when killed.",
   "authors": [
     "OffsetMonkey538"
   ],
@@ -12,6 +12,7 @@
     "issues": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas/issues"
   },
   "license": "MIT",
+  "icon": "assets/villagerdrops/icon.png",
   "environment": "*",
   "mixins": [
     "villagerdrops.mixins.json"
@@ -19,5 +20,18 @@
   "depends": {
     "fabricloader": "*",
     "minecraft": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord_invite}"
+      },
+      "parent": {
+        "id": "${root_id}",
+        "name": "${root_name}",
+        "description": "${root_description}",
+        "icon": "${root_icon}"
+      }
+    }
   }
 }

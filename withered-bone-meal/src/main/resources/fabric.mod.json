@@ -2,9 +2,8 @@
   "schemaVersion": 1,
   "id": "withermeal",
   "version": "${version}",
-
   "name": "Withered Bone Meal",
-  "description": "todo",
+  "description": "Adds Withered Bone Meal, kills plants and turns flowers into Wither Roses.",
   "authors": [
     "OffsetMonkey538"
   ],
@@ -12,10 +11,8 @@
     "sources": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas",
     "issues": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas/issues"
   },
-
   "license": "MIT",
   "icon": "assets/withermeal/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -25,7 +22,19 @@
   "depends": {
     "fabricloader": "*",
     "fabric": "*",
-    "minecraft": "*",
-    "java": ">=17"
+    "minecraft": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord_invite}"
+      },
+      "parent": {
+        "id": "${root_id}",
+        "name": "${root_name}",
+        "description": "${root_description}",
+        "icon": "${root_icon}"
+      }
+    }
   }
 }

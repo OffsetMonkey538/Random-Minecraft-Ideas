@@ -16,8 +16,8 @@ public class VillagerEntityMixin {
     @Inject(method = "afterUsing", at = @At("TAIL"))
     protected void afterUsing(TradeOffer offer, CallbackInfo ci) {
         final SimpleInventory inventory = ((VillagerEntity) (Object) (this)).getInventory();
-        final ItemStack firstBuyItem = offer.getAdjustedFirstBuyItem();
-        final ItemStack secondBuyItem = offer.getSecondBuyItem();
+        final ItemStack firstBuyItem = offer.getAdjustedFirstBuyItem().copy();
+        final ItemStack secondBuyItem = offer.getSecondBuyItem().copy();
 
         firstBuyItem.setCount(firstBuyItem.getCount()/2);
         secondBuyItem.setCount(secondBuyItem.getCount()/2);
