@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "wanderingnotifications",
   "version": "${version}",
-  "name": "Wandering Villager Notifications",
-  "description": "Sends a notification to the user in chat when a Wandering Villager spawns.",
+  "name": "Wandering Trader Notifications",
+  "description": "Sends a notification to the user in chat when a Wandering Trader spawns.",
   "authors": [
     "OffsetMonkey538"
   ],
