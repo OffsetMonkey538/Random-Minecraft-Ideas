@@ -3,8 +3,8 @@
   "minVersion": "0.8",
   "package": "io.github.offsetmonkey538.wandering_notifications.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-
+  "client": [
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
