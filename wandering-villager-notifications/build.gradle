@@ -1,0 +1,3 @@
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+version = rootProject.version

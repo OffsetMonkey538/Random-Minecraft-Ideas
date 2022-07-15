@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "wanderingnotifications",
+  "version": "${version}",
+  "name": "Wandering Villager Notifications",
+  "description": "Sends a notification to the user in chat when a Wandering Villager spawns.",
+  "authors": [
+    "OffsetMonkey538"
+  ],
+  "contact": {
+    "sources": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas",
+    "issues": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/wanderingnotifications/icon.png",
+  "environment": "*",
+  "mixins": [
+    "wanderingnotifications.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord_invite}"
+      },
+      "parent": {
+        "id": "${root_id}",
+        "name": "${root_name}",
+        "description": "${root_description}",
+        "icon": "${root_icon}"
+      }
+    }
+  }
+}
