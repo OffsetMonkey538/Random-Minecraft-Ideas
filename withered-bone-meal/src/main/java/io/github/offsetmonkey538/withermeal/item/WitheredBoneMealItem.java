@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import org.slf4j.LoggerFactory;
 
 public class WitheredBoneMealItem extends Item {
     private final Random random = Random.create();
@@ -64,7 +65,19 @@ public class WitheredBoneMealItem extends Item {
             return returnSuccess(stack, world);
         }
 
-        if (block instanceof FlowerBlock && !(block instanceof WitherRoseBlock)) {
+        if (block instanceof FlowerBlock && !(block instanceof WitherRoseBlock) || block instanceof TallFlowerBlock) {
+            if (block instanceof TallFlowerBlock) {
+                switch (blockState.get(Properties.DOUBLE_BLOCK_HALF)) {
+                    case UPPER -> {
+                        addParticles(world, pos.add(0, -1, 0));
+                        blockPos = blockPos.add(0, -1, 0);
+                    }
+                    case LOWER -> addParticles(world, pos.add(0, 1, 0));
+
+                    default -> LoggerFactory.getLogger("Withered Bone Meal").warn("How did you make a TallFlowerBlock that is neither the UPPER nor LOWER half??");
+                }
+            }
+
             addParticles(world, pos);
             setBlockState(world, blockPos, Blocks.WITHER_ROSE);
 
