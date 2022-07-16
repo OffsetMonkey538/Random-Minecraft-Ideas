@@ -10,7 +10,6 @@ import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.text.Text;
-import net.minecraft.village.TradeOffer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,15 +33,13 @@ public class LivingEntityMixin {
                 ItemStack secondBuyItem = offer.getSecondBuyItem().copy();
                 ItemStack sellItem = offer.copySellItem();
 
-                String firstItemText = firstBuyItem.getCount() + " of " + I18n.translate(firstBuyItem.getName().getString());
-                String secondItemText = " and " + secondBuyItem.getCount() + " of " + I18n.translate(secondBuyItem.getName().getString());
-                String sellItemText = sellItem.getCount() + " of " + I18n.translate(sellItem.getName().getString());
+                String firstItemText = firstBuyItem.getCount() + " " + I18n.translate(firstBuyItem.getName().getString());
+                String secondItemText = secondBuyItem.isEmpty() ? "" : (" + " + secondBuyItem.getCount() + " " + I18n.translate(secondBuyItem.getName().getString()));
+                String sellItemText = sellItem.getCount() + " " + I18n.translate(sellItem.getName().getString());
 
-                if (secondBuyItem.isEmpty()) secondItemText = "";
+                String finalMessage = firstItemText + secondItemText + " = " + sellItemText;
 
-                Text message = Text.of(firstItemText + secondItemText + " for " + sellItemText);
-
-                player.sendMessage(message);
+                player.sendMessage(Text.of(finalMessage));
             });
         }
     }
