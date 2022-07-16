@@ -7,7 +7,6 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,24 +22,9 @@ public class LivingEntityMixin {
     @Inject(method = "onSpawnPacket", at = @At(value = "TAIL"))
     public void onSpawnPacket(EntitySpawnS2CPacket packet, CallbackInfo ci) {
         if ((Object) this instanceof WanderingTraderEntity) {
-            WanderingTraderEntity wanderingTrader = (WanderingTraderEntity) (Object) this;
             ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
             player.sendMessage(Text.of(I18n.translate("commands.summon.success", I18n.translate("entity.minecraft.wandering_trader")) + " [" + (int) packet.getX() + " / " + (int) packet.getY() + " / " + (int) packet.getZ() + "]"));
-
-            wanderingTrader.getOffers().forEach(offer -> {
-                ItemStack firstBuyItem = offer.getAdjustedFirstBuyItem().copy();
-                ItemStack secondBuyItem = offer.getSecondBuyItem().copy();
-                ItemStack sellItem = offer.copySellItem();
-
-                String firstItemText = firstBuyItem.getCount() + " " + I18n.translate(firstBuyItem.getName().getString());
-                String secondItemText = secondBuyItem.isEmpty() ? "" : (" + " + secondBuyItem.getCount() + " " + I18n.translate(secondBuyItem.getName().getString()));
-                String sellItemText = sellItem.getCount() + " " + I18n.translate(sellItem.getName().getString());
-
-                String finalMessage = firstItemText + secondItemText + " = " + sellItemText;
-
-                player.sendMessage(Text.of(finalMessage));
-            });
         }
     }
 }
