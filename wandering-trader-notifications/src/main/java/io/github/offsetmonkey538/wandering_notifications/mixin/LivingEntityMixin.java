@@ -26,8 +26,8 @@ public class LivingEntityMixin {
             WanderingTraderEntity wanderingTrader = (WanderingTraderEntity) (Object) this;
             ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
-            player.sendMessage(Text.of("A wandering trader has spawned at [" + (int) packet.getX() + " / " + (int) packet.getY() + " / " + (int) packet.getZ() + "]"));
-            player.sendMessage(Text.of("Here are the trades:"));
+            player.sendMessage(Text.of(I18n.translate("commands.summon.success", I18n.translate("entity.minecraft.wandering_trader")) + " [" + (int) packet.getX() + " / " + (int) packet.getY() + " / " + (int) packet.getZ() + "]"));
+
             wanderingTrader.getOffers().forEach(offer -> {
                 ItemStack firstBuyItem = offer.getAdjustedFirstBuyItem().copy();
                 ItemStack secondBuyItem = offer.getSecondBuyItem().copy();
