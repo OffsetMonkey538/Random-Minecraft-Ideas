@@ -25,9 +25,7 @@ public class LivingEntityMixin {
     @SuppressWarnings("ConstantConditions")
     @Inject(method = "onSpawnPacket", at = @At(value = "TAIL"))
     public void onSpawnPacket(EntitySpawnS2CPacket packet, CallbackInfo ci) {
-        if ((Object) this instanceof WanderingTraderEntity) {
-            WanderingTraderEntity wanderingTrader = (WanderingTraderEntity) (Object) this;
-
+        if ((Object) this instanceof WanderingTraderEntity wanderingTrader) {
             wanderingTrader.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 200));
 
             ClientPlayerEntity player = MinecraftClient.getInstance().player;
